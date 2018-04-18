@@ -8,6 +8,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import HomePage from '../ui/HomePage';
 import Login from '../ui/Login';
+import Signup from '../ui/Signup';
 
 export const history = createHistory();
 
@@ -16,6 +17,7 @@ export const AppRouter = () => (
     <Switch>
       <Route path="/" component={HomePage} exact={true} />
       <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
     </Switch>
   </Router>
 );

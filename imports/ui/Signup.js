@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
 
-export default class Login extends React.Component {
+export default class Signup extends React.Component {
   constructor(props) {
     super(props);
-    this.state= {
+    this.state = {
       error: ''
     };
   }
@@ -16,34 +16,37 @@ export default class Login extends React.Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    // using bind.this allows you to use refs
+
     let email = this.refs.email.value.trim();
     let password = this.refs.password.value.trim();
 
-    Meteor.loginWithPassword({email}, password, (err) => {
+    if (password.length < 5) {
+      return this.setState({error: 'Password must be more than 4 characters long'});
+    }
+
+    Accounts.createUser({email, password}, (err) => {
       if (err) {
-        this.setState({ error: 'Unable to login. Check email and password.' });
+        this.setState({error: err.reason });
       } else {
-        this.setState({ error: '' });
+        this.setState({error: ''});
       }
     });
   }
-  
 
   render() {
     return (
       <div>
-        <h1>Login</h1>
+        <h1>Signup component here</h1>
 
         {this.state.error ? <p>{this.state.error}</p> : undefined}
 
         <form onSubmit={this.onSubmit.bind(this)} noValidate>
           <input type="email" ref="email" name="email" placeholder="Email" />
           <input type="password" ref="password" name="password" placeholder="Password" />
-          <button>Login</button>
+          <button>Create Account</button>
         </form>
 
-        <Link to="/signup">Need an account?</Link>
+        <Link to="/login"> Already have an account? </Link>
         <Link to="/">Home</Link>
       </div>
     );
