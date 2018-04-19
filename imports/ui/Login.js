@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 
 export default class Login extends React.Component {
+  // this is where authentication is handled, history is part of props passed in
+  // constructor method, lifecycle methods handle url changes through history.replace()
   constructor(props) {
     super(props);
     this.state= {
