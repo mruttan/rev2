@@ -4,12 +4,11 @@ import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
 import { Session } from 'meteor/session';
 
-import { AppRouter, history } from '../imports/routes/AppRouter';
+import { AppRouter, history, onAuthChange } from '../imports/routes/AppRouter';
 
 Tracker.autorun(() => {
   const isAuthenticated = !!Meteor.userId();
-  console.log('isAuthenticated: ', isAuthenticated);
-  console.log('pathname: ', history.location.pathname)
+  onAuthChange(isAuthenticated);
 });
 
 Meteor.startup(() => {

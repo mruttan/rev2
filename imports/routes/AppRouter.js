@@ -16,12 +16,34 @@ import Signup from '../ui/Signup';
 
 export const history = createHistory();
 
+const unauthenticatedPages = ['/login', '/signup'];
+let isUnauthenticatedPage = false;
+
+const ChangeTracker = withRouter(({ match, location, history }) => {
+  const pathName = location.pathname;
+  isUnauthenticatedPage = unauthenticatedPages.includes(pathName);
+
+  return false;
+});
+
+export const onAuthChange = (isAuthenticated) => {
+  console.log('isAuthenticated: ', isAuthenticated);
+  console.log('pathname: ', history.location.pathname);
+  if (isAuthenticated && isUnauthenticatedPage) {
+    history.replace('/');
+  }
+}
+
+
 export const AppRouter = () => (
   <Router history={history}>
+    <div>  
       <Switch>
         <Route path="/" component={HomePage} exact={true} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
       </Switch>
+      <ChangeTracker />
+    </div>
   </Router>
 );
