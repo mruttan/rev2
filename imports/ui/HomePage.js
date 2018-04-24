@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import ReviewList from './ReviewList';
 import ReviewEditor from './ReviewEditor';
+import SiteHeader from './SiteHeader';
 
 export class HomePage extends React.Component {
   constructor (props) {
@@ -13,14 +14,15 @@ export class HomePage extends React.Component {
   render(props) {
     return (
       <div>
-        hello wurld
-        <button onClick={() => Accounts.logout()}>Logout</button>
+        home page
+        <SiteHeader/>
         <div>
           review list will go here
           <ReviewList/>
         </div>
         <div>
           review editor will go here
+          <ReviewEditor/>
         </div>
       </div>
     );

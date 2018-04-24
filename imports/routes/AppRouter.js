@@ -42,6 +42,7 @@ export const AppRouter = () => (
         <Route path="/" component={HomePage} exact={true} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/:id" component={HomePage} />
       </Switch>
       <ChangeTracker />
     </div>

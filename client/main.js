@@ -11,6 +11,10 @@ Tracker.autorun(() => {
   onAuthChange(isAuthenticated);
 });
 
+
+
 Meteor.startup(() => {
+  Session.set('selectedReviewId', undefined);
+  Session.set('loggedIn', undefined);
   ReactDOM.render(<AppRouter/>, document.getElementById('app'));
 });

@@ -6,13 +6,14 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Reviews } from '../api/reviews';
 import ReviewListHeader from './ReviewListHeader';
 import ReviewListItem from './ReviewListItem'
-//import ReviewListEmptyItem from './ReviewListEmptyItem';
+import ReviewListEmptyItem from './ReviewListEmptyItem';
 
 export const ReviewList = (props) => {
   return (
     <div>
       review list here
       <ReviewListHeader />
+      { props.reviews.length === 0 ? <ReviewListEmptyItem/> : undefined }
       { props.reviews.map((review) => {
         return <ReviewListItem key={review._id} review={review}/>
       })}
@@ -20,7 +21,13 @@ export const ReviewList = (props) => {
   );
 };
 
+ReviewList.propTypes = {
+  reviews: PropTypes.array.isRequired
+};
+
 export default withTracker(() => {
+  const selectedReviewId = Session.get('selectedReviewId');
+
   Meteor.subscribe('reviews');
   return { 
     reviews: Reviews.find({}, {
@@ -29,7 +36,8 @@ export default withTracker(() => {
       }
     }).fetch().map((review) => {
       return {
-        ...review
+        ...review,
+        selected: review._id === selectedReviewId
       };
     })
   };
