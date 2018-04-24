@@ -13,6 +13,7 @@ import { Session } from 'meteor/session';
 import HomePage from '../ui/HomePage';
 import Login from '../ui/Login';
 import Signup from '../ui/Signup';
+import NotFound from '../ui/NotFound';
 
 export const history = createHistory();
 
@@ -34,6 +35,8 @@ export const onAuthChange = (isAuthenticated) => {
   }
 }
 
+//NotFound component does not work as intended, perhaps i need to route to something like
+// /reviews? I don't really want to though...maybe it is a good idea
 
 export const AppRouter = () => (
   <Router history={history}>
@@ -43,6 +46,7 @@ export const AppRouter = () => (
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/:id" component={HomePage} />
+        <Route path="*" component={NotFound} />
       </Switch>
       <ChangeTracker />
     </div>

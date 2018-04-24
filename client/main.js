@@ -11,7 +11,13 @@ Tracker.autorun(() => {
   onAuthChange(isAuthenticated);
 });
 
-
+Tracker.autorun(() => {
+  const selectedReviewId = Session.get('selectedReviewId');
+  
+  if (selectedReviewId) {
+    history.replace(`/${selectedReviewId}`);
+  }
+});
 
 Meteor.startup(() => {
   Session.set('selectedReviewId', undefined);

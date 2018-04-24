@@ -10,6 +10,9 @@ export class HomePage extends React.Component {
   constructor (props) {
     super(props);
   }
+  componentWillMount() {
+    Session.set('selectedReviewId', this.props.match.params.id);
+  }
 
   render(props) {
     return (
