@@ -11,7 +11,6 @@ import ReviewListEmptyItem from './ReviewListEmptyItem';
 export const ReviewList = (props) => {
   return (
     <div>
-      review list here
       <ReviewListHeader />
       { props.reviews.length === 0 ? <ReviewListEmptyItem/> : undefined }
       { props.reviews.map((review) => {

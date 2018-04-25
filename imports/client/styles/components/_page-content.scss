@@ -1,0 +1,15 @@
+.page-content {
+  display: flex;
+  height: $page-content-height;
+  margin: 0 auto;
+  max-width: $site-max-width;
+}
+
+.page-content__sidebar {
+  display: flex;
+}
+
+.page-content__main {
+  display: flex;
+  width: 100%;
+}

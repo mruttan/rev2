@@ -17,15 +17,14 @@ export class HomePage extends React.Component {
   render(props) {
     return (
       <div>
-        home page
-        <SiteHeader/>
-        <div>
-          review list will go here
-          <ReviewList/>
-        </div>
-        <div>
-          review editor will go here
-          <ReviewEditor/>
+        <SiteHeader title="Rev2"/>
+        <div className="page-content">
+          <div className="page-content__sidebar">
+            <ReviewList/>
+          </div>
+          <div className="page-content__main">
+            <ReviewEditor/>
+          </div>
         </div>
       </div>
     );

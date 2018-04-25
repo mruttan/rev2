@@ -24,7 +24,6 @@ export class ReviewListHeader extends React.Component {
   render(props) {
     return (
       <div>
-        REVIEW LIST HEADER HERE
         <button onClick={this.handleOnClick.bind(this)}>Create Review</button>
       </div>
     );

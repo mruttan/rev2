@@ -8,6 +8,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 export class SiteHeader extends React.Component {
   constructor(props) {
     super(props);
+
   };
   handleLogout() {
     Accounts.logout();
@@ -18,17 +19,21 @@ export class SiteHeader extends React.Component {
   render(props) {
     if (Session.get('loggedIn') === true) {
       return (
-        <div>
-          Site Header here
-          <button onClick={this.handleLogout.bind(this)}>Logout</button>
+        <div className="header">
+          <div className="header__content">
+            <h1 className="header__title">{this.props.title}</h1>
+            <button className="button button--link-text" onClick={this.handleLogout.bind(this)}>Logout</button>
+          </div>
         </div>
       );
     } else {
       return (
-        <div>
-          Site Header here
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link>
+        <div className="header">
+          <div className="header__content">
+            <h1 className="header__title">{this.props.title}</h1>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
+          </div>
         </div>
       );
     }
@@ -36,6 +41,7 @@ export class SiteHeader extends React.Component {
 }
 
 SiteHeader.propTypes = {
+  title: PropTypes.string.isRequired,
   loggedIn: PropTypes.bool
 }
 

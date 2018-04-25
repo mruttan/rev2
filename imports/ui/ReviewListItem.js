@@ -9,9 +9,9 @@ export const ReviewListItem = (props) => {
     <div onClick={() => {
       props.Session.set('selectedReviewId', props.review._id);
     }}>
-      { props.review.title || 'Untitled review' }
-      { moment(props.review.updatedAt).format('M/DD/YY') }
-      { props.review.writtenBy }
+      <h5>{ props.review.title || 'Untitled review' }</h5>
+      <p>{ moment(props.review.updatedAt).format('M/DD/YY') }</p>
+      <p>{ props.review.writtenBy }</p>
       { props.review.selected ? ' - selected' : null }
     </div>
   );
