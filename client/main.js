@@ -13,11 +13,19 @@ Tracker.autorun(() => {
 
 Tracker.autorun(() => {
   const selectedReviewId = Session.get('selectedReviewId');
-  
+  Session.set('isNavOpen', false);
+
   if (selectedReviewId) {
     history.replace(`/${selectedReviewId}`);
   }
 });
+
+Tracker.autorun(() => {
+  const isNavOpen = Session.get('isNavOpen');
+
+  document.body.classList.toggle('is-nav-open', isNavOpen);
+});
+
 
 Meteor.startup(() => {
   Session.set('selectedReviewId', undefined);

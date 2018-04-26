@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accounts } from 'meteor/accounts-base';
+import { Session } from 'meteor/session';
 import { withRouter } from 'react-router-dom';
 
 import ReviewList from './ReviewList';

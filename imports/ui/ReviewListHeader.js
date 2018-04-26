@@ -17,14 +17,14 @@ export class ReviewListHeader extends React.Component {
   handleOnClick() {
     this.props.meteorCall('reviews.insert', (err, res) => {
       if (res) {
-
+        this.props.Session.set('selectedReviewId', res);
       }
     });
   } 
   render(props) {
     return (
-      <div>
-        <button onClick={this.handleOnClick.bind(this)}>Create Review</button>
+      <div className="item-list__header">
+        <button className="button" onClick={this.handleOnClick.bind(this)}>Create Review</button>
       </div>
     );
 
@@ -32,11 +32,13 @@ export class ReviewListHeader extends React.Component {
 }
 
 ReviewListHeader.propTypes = {
-  meteorCall: PropTypes.func.isRequired
+  meteorCall: PropTypes.func.isRequired,
+  Session: PropTypes.object.isRequired
 }
 
 export default withTracker(() => {
   return {
-    meteorCall: Meteor.call
+    meteorCall: Meteor.call,
+    Session
   };
 })(ReviewListHeader);

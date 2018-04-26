@@ -54,19 +54,21 @@ export class ReviewEditor extends React.Component {
   render() {
     if (this.props.review) {
       return (
-        <div>
-          <input value={this.state.title} placeholder="Your Title here" onChange={this.handleTitleChange.bind(this)}/>
-          <input value={this.state.rating} placeholder="Your Rating here" onChange={this.handleRatingChange.bind(this)}/>
-          <textarea value={this.state.body} placeholder="Your Review here" onChange={this.handleBodyChange.bind(this)}></textarea>
+        <div className="editor">
+          <input className="editor__title" value={this.state.title} placeholder="Your Title here" onChange={this.handleTitleChange.bind(this)}/>
+          <input className="editor__rating" value={this.state.rating} placeholder="Your Rating here" onChange={this.handleRatingChange.bind(this)}/>
+          <textarea className="editor__body" value={this.state.body} placeholder="Your Review here" onChange={this.handleBodyChange.bind(this)}></textarea>
           <div>
-            <button onClick={this.handleRemoval.bind(this)}>Delete Review</button>
+            <button className="button button--secondary" onClick={this.handleRemoval.bind(this)}>Delete Review</button>
           </div>
         </div>
       );
     } else {
       return (
-        <div>
-          {this.props.selectedReviewId ? 'Review not found.' : 'Pick or create a review to start!'}
+        <div className="editor">
+          <p className="editor__message">
+            {this.props.selectedReviewId ? 'Review not found.' : 'Pick or create a review to start!'}
+          </p>
         </div>
       );
     }
